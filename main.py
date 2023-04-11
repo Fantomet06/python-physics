@@ -33,11 +33,9 @@ def draw():
     pygame.display.update()
 
 def draw_circle():
-    #draw a circle
     pygame.draw.circle(screen, (0,0,0), (400,400), 50)
     pygame.display.update()
 
 # -- Main Program --
-
 if __name__ == "__main__":
     main(running)
