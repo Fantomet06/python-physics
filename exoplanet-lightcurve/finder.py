@@ -1,7 +1,11 @@
-import lightkurve as lk # type: ignore
-import numpy as np
-from lightkurve import TessTargetPixelFile, search_targetpixelfile # type: ignore
+from lightkurve import search_targetpixelfile
 
-pixelFile = search_targetpixelfile("KIC 6922244", author="Kepler", cadence="long", quarter=4).download()
+# First we open a Target Pixel File from MAST, this one is already cached from our previous tutorial!
+tpf = search_targetpixelfile('KIC 6922244', author="Kepler", cadence="long", quarter=4).download()
 
-pixelFile.plot(frame=42)
+# Then we convert the target pixel file into a light curve using the pipeline-defined aperture mask.
+lc = tpf.to_lightcurve(aperture_mask=tpf.pipeline_mask)
+
+lc.plot();
+
+lc.show()
