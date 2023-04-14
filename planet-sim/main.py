@@ -104,6 +104,9 @@ def main():
     mars = Planet(-1.524 * Planet.AU, 0, 12, RED, 6.39 * 10**23)
     mars.y_vel = 24.077 * 1000
 
+    moon = Planet(-1 * Planet.AU, 0, 8, WHITE, 7.34767309 * 10**22)
+    moon.y_vel = 1.022 * 1000
+
     earth = Planet(-1 * Planet.AU, 0, 16, BLUE, 5.9742 * 10**24)
     earth.y_vel = 29.783 * 1000 
 
