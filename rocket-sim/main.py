@@ -21,7 +21,7 @@ DARK_GRAY = (80, 78, 81)
 def main():
     run = True
     clock = pygame.time.Clock()
-    object = handler.Rocket(RED, 1, 400, 100)
+    object = handler.Rocket(RED, 1, 400, 100, 60)
 
     while run:
         clock.tick(60)
