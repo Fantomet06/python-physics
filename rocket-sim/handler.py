@@ -30,9 +30,9 @@ class Rocket:
         W = self.mass #weight of payload in kg
         Cd = 1.75 #drag coefficient of parachute
         r = 1.229 #density of air in kg/m^3
-        A = 0.5 #area of parachute in m^2
+        A = 8.3 #area of parachute in m^2
         g = 9.81 #acceleration due to gravity in m/s^2
 
         vel = drag.velocity(W, Cd, r, A)
 
-        self.y += vel * self.timestep
+        self.y += vel/10 * self.timestep
