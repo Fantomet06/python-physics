@@ -23,7 +23,7 @@ class Rocket:
         #pygame.draw.circle(win, self.color, (self.x, self.y), 10)
 
         # -- Text --
-        distance_text = FONT.render(f"{self.y:.2f} x", 1, (255, 255, 255))
+        distance_text = FONT.render(f"{round((self.y / 10),2)} m", 1, (255, 255, 255))
         win.blit(distance_text, (self.x + 10, self.y))
 
     def update_pos(self):
