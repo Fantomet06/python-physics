@@ -17,6 +17,7 @@ YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
 DARK_GRAY = (80, 78, 81)
+GREEN = (0, 255, 0)
 
 def main():
     run = True
@@ -25,7 +26,7 @@ def main():
 
     while run:
         clock.tick(60)
-        WIN.fill(DARK_GRAY)
+        WIN.fill(BLUE)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -33,6 +34,7 @@ def main():
 
         object.update_pos()
         object.draw(WIN)
+        pygame.draw.rect(WIN, GREEN, (0, 1000, 1080, 80))
 
         pygame.display.update()
 
