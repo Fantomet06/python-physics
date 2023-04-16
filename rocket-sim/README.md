@@ -4,3 +4,7 @@ Simple rocket launch and recovery simulator based on NASA's formulas for calcula
 ### Sources:
 - https://www.grc.nasa.gov/www/k-12/rocket/rktpow.html
 - https://rechneronline.de/g-acceleration/fall-velocity.php 
+- https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/termvel/
+
+Note to self:
+- https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/learn-about-aerodynamics/
