@@ -22,7 +22,10 @@ GREEN = (0, 255, 0)
 def main():
     run = True
     clock = pygame.time.Clock()
-    object = handler.Rocket(RED, 1, 400, 100, 60)
+    object = handler.Rocket(RED, 1, 400, 100, 76)
+    object.add_parachute(1.75, 20) # drag coefficient, m^2 parachute
+    object.parachute()
+    object.update_pos() # Only for testing without graphics
 
     while run:
         clock.tick(60)
