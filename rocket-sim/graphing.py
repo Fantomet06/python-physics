@@ -4,21 +4,21 @@ import matplotlib.pyplot as plt
 
 # https://stackoverflow.com/questions/71542662/python-plotting-free-fall-with-drag
 
-mass = 76  # kg
+mass = 120  # kg
 g = 9.81    # m/s/s
 c_1 = 1.2
-rho_0 = 1.75
+rho_0 = 1.2
 h_n = 10400
-area = 8.3
+area = 1
 dt = 0.01     # reduce delta t to improve computation speed (result not impacted)
-t = np.arange(0, 15, dt)  # extend time to 600 seconds
+t = np.arange(0, 600, dt)  # extend time to 600 seconds
 
 x = np.zeros(len(t))
 v = np.zeros(len(t))
 a = np.zeros(len(t))
 rho = np.zeros(len(t))
 
-x[0] = 100
+x[0] = 40000
 v[0] = 0
 a[0] = -g
 
