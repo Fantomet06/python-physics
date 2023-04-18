@@ -16,4 +16,9 @@ def velocity(W, Cd, r, A):
 def get_area(W, Cd, r, V):
     return (2*W*g)/(Cd*r*V**2)
 
+# given newtons of upward force, calculate the acceleration of the rocket with drag
+def acceleration(W, Cd, r, A, F):
+    return (F - (0.5 * Cd * r * A * V**2))/W
+
+
 #print(velocity(W, Cd, r, A))
