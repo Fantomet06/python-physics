@@ -11,7 +11,7 @@ V = 8.7 #velocity of rocket in m/s
 F = 8.7*2 #force of rocket engine in N
 
 dt = 0.01     # reduce delta t to improve computation speed (result not impacted)
-t = np.arange(0, 2.9, dt)  # extend time to 600 seconds
+t = np.arange(0, 5.49, dt)  # extend time to 600 seconds
 
 y = []
 vel = []
@@ -21,12 +21,14 @@ x = np.zeros(len(t))
 v = np.zeros(len(t))
 a = np.zeros(len(t))
 x[0] = 0
-v[0] = F-(0.5*rho*(F**2)*Cd*A+g)
-a[0] = F-(0.5*rho*(F**2)*Cd*A+g)/m
+v[0] = (F-(0.5*rho*(F**2)*Cd*A+g))*dt
+a[0] = (F-(0.5*rho*(F**2)*Cd*A+g)/m)*dt
 
 #running time for fuel: 2.9 seconds
 
 for i in range(1, len(t)):
+    if t[i] > 2.9:
+        F = 0
     a[i] = F-(0.5*rho*(v[i-1]**2)*Cd*A+g)/m
     v[i] = v[i-1] + a[i-1]*dt
     x[i] = x[i-1] + v[i-1]*dt
@@ -45,5 +47,9 @@ ax3.set(ylabel = 'Acceleration (m/s/s)', xlabel = 'Time (secs)')
 ax3.grid()
 
 plt.show()
+
+# find max altitude time
+#print(np.array(x).argmax())
+#print(t[549])
 
 print("done")
