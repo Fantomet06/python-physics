@@ -11,7 +11,8 @@ V = 8.7 #velocity of rocket in m/s
 F = 8.7*2 #force of rocket engine in N
 
 dt = 0.01     # reduce delta t to improve computation speed (result not impacted)
-t = np.arange(0, 5.49, dt)  # extend time to 600 seconds
+t = np.arange(0, 25, dt)  # extend time to 600 seconds
+# 5.49 
 
 y = []
 vel = []
@@ -27,11 +28,23 @@ a[0] = (F-(0.5*rho*(F**2)*Cd*A+g)/m)*dt
 #running time for fuel: 2.9 seconds
 
 for i in range(1, len(t)):
-    if t[i] > 2.9:
-        F = 0
-    a[i] = F-(0.5*rho*(v[i-1]**2)*Cd*A+g)/m
-    v[i] = v[i-1] + a[i-1]*dt
-    x[i] = x[i-1] + v[i-1]*dt
+    if t[i] > 0.01 and x[i-1] <= 0:
+            break
+    if t[i] > 0.01 and v[i-1] <= 0:
+        Cd = 1.75 #drag coefficient of parachute
+        A = 10
+
+        a[i] = (-g*m + 0.5*rho*(abs(v[i-1]**2))*Cd*A)/m
+        print(a[i])
+        v[i] = v[i-1] + a[i-1]*dt
+        x[i] = x[i-1] + v[i-1]*dt
+
+    else:
+        if t[i] > 2.9:
+            F = 0
+        a[i] = (F-(0.5*rho*(v[i-1]**2)*Cd*A+g))/m
+        v[i] = v[i-1] + a[i-1]*dt
+        x[i] = x[i-1] + v[i-1]*dt
 
 f, (ax1, ax2, ax3) = plt.subplots(3,1,sharex=True,figsize=(8,12))
 ax1.plot(t, x)
@@ -51,5 +64,5 @@ plt.show()
 # find max altitude time
 #print(np.array(x).argmax())
 #print(t[549])
-
+print(x)
 print("done")
