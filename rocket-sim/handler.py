@@ -2,6 +2,7 @@ import pygame
 import math
 import drag
 from termcolor import colored
+import numpy as np
 
 # -- Classes --
 class Rocket:
@@ -11,6 +12,7 @@ class Rocket:
         self.timestep = timestep
         self.x = start_x
         self.y = start_y
+        self.start_y = start_y
         self.mass = mass
 
         self.Rocket_Cd = 0
@@ -35,7 +37,7 @@ class Rocket:
         #pygame.draw.circle(win, self.color, (self.x, self.y), 10)
 
         # -- Text --
-        distance_text = FONT.render(f"{round(((1000-self.y)/10),2)} m", 1, (255, 255, 255))
+        distance_text = FONT.render(f"{round(((self.start_y-self.y)/10),2)} m", 1, (255, 255, 255))
         win.blit(distance_text, (self.x + 10, self.y))
 
     def add_parachute(self, Cd, A):
@@ -47,11 +49,12 @@ class Rocket:
         self.Rocket_A = A
         
     def calculate_trajectory(self):  
-        print(self.Rocket_Cd, self.Parachute_Cd, self.mass, self.Rocket_A, self.Parachute_A)  
+        #print(self.Rocket_Cd, self.Parachute_Cd, self.mass, self.Rocket_A, self.Parachute_A)  
         vel = drag.trajectory(self.Rocket_Cd, self.Parachute_Cd, self.mass, self.Rocket_A, self.Parachute_A, 8.7, 2, 2.9)
         self.vel = vel
+        print(f"\n({colored('X', 'blue')}) Calculated Trajectory: ")
         print(self.vel)
-        print("calculated trajectory")
+        print(f"\n({colored('X', 'blue')}) Expected Max Altitude: {colored(round(self.vel[np.array(self.vel).argmax()],2),'green')} m \n")
 
     def update_pos(self, frame):
 
@@ -67,7 +70,7 @@ class Rocket:
         #print(vel[frame])
         if vel[frame] < vel[frame-1]:
             self.Parachute_Active = True
-        self.y = 1000 - vel[frame] * 10
+        self.y = self.start_y - vel[frame] * 10
 
     def parachute(self):
         W = self.mass #weight of payload in kg

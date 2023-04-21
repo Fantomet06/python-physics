@@ -32,10 +32,10 @@ for i in range(1, len(t)):
             break
     if t[i] > 0.01 and v[i-1] <= 0:
         Cd = 1.75 #drag coefficient of parachute
-        A = 10
+        A = 0.5
 
         a[i] = (-g*m + 0.5*rho*(abs(v[i-1]**2))*Cd*A)/m
-        print(a[i])
+        #print(a[i])
         v[i] = v[i-1] + a[i-1]*dt
         x[i] = x[i-1] + v[i-1]*dt
 

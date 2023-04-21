@@ -6,7 +6,7 @@ print("\n")
 # 10 pixels = 1 meter
 
 # -- Window --
-WIDTH, HEIGHT = 1080, 1080
+WIDTH, HEIGHT = 620, 620
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 #pygame.display.set_caption("Rocket Simulator")
 
@@ -22,7 +22,7 @@ GREEN = (0, 255, 0)
 def main():
     run = True
     clock = pygame.time.Clock()
-    object = handler.Rocket(RED, 1, 400, 1000, 1)
+    object = handler.Rocket(RED, 1, WIDTH/2, HEIGHT-20, 1)
     object.add_parachute(1.75, 0.5) # drag coefficient, m^2 parachute
     #object.parachute()
     object.add_rocket_drag(0.5, 0.0078) # drag coefficient, m^2 rocket
@@ -39,7 +39,7 @@ def main():
 
         object.update_pos(frame)
         object.draw(WIN)
-        pygame.draw.rect(WIN, GREEN, (0, 1000, 1080, 80))
+        pygame.draw.rect(WIN, GREEN, (0, HEIGHT-20, HEIGHT, 80))
 
         pygame.display.update()
         frame += 1

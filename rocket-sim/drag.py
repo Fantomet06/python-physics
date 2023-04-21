@@ -75,5 +75,5 @@ def trajectory(Start_Cd, Parachute_Cd, Mass, Area, Parachute_A, Force, Engines, 
             v[i] = v[i-1] + a[i-1]*dt
             x[i] = x[i-1] + v[i-1]*dt
 
-    print(x)
+    #print(x)
     return x
