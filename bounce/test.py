@@ -4,7 +4,7 @@ pygame.init()
 print("\n")
 
 # -- Window --
-WIDTH, HEIGHT = 1920, 1080
+WIDTH, HEIGHT = 620, 620
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("wee woo")
 
